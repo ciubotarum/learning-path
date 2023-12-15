@@ -15,6 +15,7 @@ import java.util.List;
 public class DemoApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
@@ -25,8 +26,7 @@ public class DemoApplication {
 						1L,
 						"Mariam",
 						"mariam.jamal@gmail.com",
-						LocalDate.of(2000, Month.JANUARY, 5),
-						21
+						LocalDate.of(2000, Month.JANUARY, 5)
 				)
 		);
 	}
