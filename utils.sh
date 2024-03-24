@@ -77,3 +77,77 @@ jshell> while (iterator.hasNext()) {
             # Typically used to release resources that it has been holding.
 @Named # Similar to @Component
 
+##  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+###  REACT
+> set PORT=5100 && npm start  # to change the port
+
+### To start the app
+> npm start
+
+### TYPESCRIPT
+> tsc myhelloworld.ts   # compile a typescript code
+> node myhelloworld.js  # run the js file
+
+## Variable types
+boolean # true/false
+number # integer and floating points
+string # Text data
+any # Supports "any" datatype assignment
+
+# To define a variable:
+let <variableName>: <type> = <initial value>;
+
+# The .js file is still generated even with compilation errors. To prevent this:
+> tsc --noEmitOnError NameOfFile.ts
+
+## To generate a typescript react application tamplate (navigate to the folder you want it to be created)
+> npx create-react-app react-library --template typescript
+
+
+################################ DOCKER ############################################
+# To create a new directory run this in comand prompt
+> mkdir name-of-directory
+
+# To open folders in Visual Studio run thid in comand prompt
+> code .
+> idea .                  # open in intellij
+> explorer.exe .          # open the current file in file explorer
+
+# To build a docker image
+> docker build -t hello-docker .     
+
+# To run a file in comand prompt with docker
+> docker run hello-docker
+> docker run redis:4.0               # to run another version of redis
+> docker run -d name_of_container sleep 1500   # to run the container in a detached mode (-d) for 1500 seconds
+> docker attach  nr_of_container     # to run again in the foreground
+
+# List containers
+> docker ps                          # all running containers
+> docker ps -a                       # is active  (running and not running)
+> docker stop name_of_container      # to stop running a container
+> docker rm name_of_container        # remove a container
+> docker images                      # list all the images available
+> docker rmi name_of_image           # to remove an image
+
+# To see the image without run the container, just want to download the image
+> docker pull name-of-image
+
+# Run a docker container from ubuntu
+> docker run ubuntu
+
+# Run a container with the nginx:1.14-alpine image and name it webapp
+> docker run --name webapp -d nginx:1.14-alpine
+
+# Run an application on docker using different ports  -p (port) 
+> docker run -p 80:5000 kodekloud/webapp
+
+# Additional information about a container
+> docker inspect name_of_container
+
+# To see the logs of the application in the container 
+> docker logs name_of_container
+
+
+
