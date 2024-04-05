@@ -149,5 +149,24 @@ let <variableName>: <type> = <initial value>;
 # To see the logs of the application in the container 
 > docker logs name_of_container
 
+# Run an instance of kodekloud/simple-webapp with a tag blue and map port 8080 on the container to 8282 on the host.
+> docker run -d -p 8282:8080 kodekloud/simple-webapp:blue
+
+# To see what is in the Dockerfile of an application
+> cat /the/way/to/the/application/Dockerfile
+
+# To find something in a Dockerfile
+> grep -i whatIWantToFind /the/way/to/the/application/Dockerfile
+
+# Build a docker image using the Dockerfile and name it webapp-color. cd to the file where you want to build the image
+> docker build -t webapp-color .
+
+# To see in what directory you are now
+> pwd
+
+# To change something in a Dockerfile in the comand prompt 
+> nano Dockerfile
+
+
 
 
