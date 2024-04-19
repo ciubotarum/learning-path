@@ -137,6 +137,9 @@ let <variableName>: <type> = <initial value>;
 # Run a docker container from ubuntu
 > docker run ubuntu
 
+#Run and enter the container 
+> docker run -it name-of-image bash
+
 # Run a container with the nginx:1.14-alpine image and name it webapp
 > docker run --name webapp -d nginx:1.14-alpine
 
@@ -168,5 +171,155 @@ let <variableName>: <type> = <initial value>;
 > nano Dockerfile
 
 
+### Docker engine
+> docker -H=remote-docker-engine:port run nginx #(2375)
+
+# List all the processes running on a container
+> docker exec container-id ps -eaf
 
 
+### Volumes
+> docker volume create data_volume
+> docker run -v datad_volume:/var/lib/mysql mysql
+> docker run -v /data/mysql:/var/lib/mysql mysql
+# we can rewrite this 
+> docker run --mount type=bind, source=/data/mysql, target=/var/lib/mysql mysql
+
+
+# To see the memory alocation fot docker 
+> docker system df 
+#To see the memory alocation to every image/container
+> docker system df -v
+
+
+### Network
+# To run a ntwork
+> docker run Ubuntu --network=none # or host
+
+# To explore the networks
+> docker network ls
+
+# To find the ID associated to a network
+> docker network inspect name-of-network
+ 
+# To inspect network
+> docker inspect name_of_network
+
+### Container Orchestration
+# If one localhost fail there is another running
+> docker service create --replicas=100 nodejs
+> kubectl run --replicas=1000 my-web-server
+# do the same automatically
+> kubectl scale --replicas=2000 my-web-server
+# roll back the images that cruched
+> kubectl rolling-update my-web-server --image=web-server:2
+
+# Deploy an application on the cluster
+> kubectl run hello-minikube
+
+# View information about the cluster 
+> kubectl cluster-info
+
+# List all the nodes of a cluster
+> kubectl get nodes
+
+# docker compose up
+docker-compose up -d
+docker-compose down
+docker-compose up -d --build
+
+
+
+
+###################################### LINUX ##########################################################
+## CTRL + ALT + T           -   to open the terminal
+# List Storage
+> ls
+> ls /                 # file system at the very beginning of hard drive
+> ls -l /              # to see more details or
+> ll
+> ls -a                # more information
+
+# CTRL + L to clear the screen or
+> clear
+
+# Create a New File or update it if it already exists
+> touch testfile.txt
+
+# Text editor
+> nano
+
+# Know if a command exists
+> which nano
+
+# To install vim (another editor)
+> sudo apt install vim-nox
+
+# To copy files
+> cp nameOfFile.txt nameOfTheNewFIle.txt
+# To remove files
+> rm nameOfFile.txt
+# To remove a package
+> sudo apt remove apache2
+# remove other packages installed with apache2 after remove it
+> sudo apt autoremove
+# To move the files to a directory (and to rename files, just put instead of name directory the new file name)
+> mv nameOfFile.txt nameOfDirectory
+
+# To see if the files are different
+> diff newfile.txt test2.txt
+
+## To customize the terminal   (add a shortcut)
+> cd ~/.bashrc
+> nano ~/.bashrc
+> alias c='clear'
+> source ~/.bashrc
+# To remove an alias
+> unalias nameOfAlias
+
+## To create a file to be executed (in the file write the comand you want to execute)
+# if put "-x" the execution is denied (r is for read, w is for write)
+> chmod +x myscript.sh
+
+# Check resource usage (add -m to see in megabites)
+> free
+# Check disck space
+> df -h
+
+# TO SEE THE MEMORY USAGE
+> htop
+
+# Update repositories
+> sudo apt update
+> sudo apt upgrade                        # update the package that do not have to install or remove other packages
+> sudo apt dist-upgrade                   # upgrade the rest that was not upgraded by the previous comand
+
+# Search packages available
+> apt search firefox
+
+# To reboot the terminal (after you make some changes)
+> sudo reboot
+
+# To view logs (sudo in the beginning if doesn't work)
+> cat /var/log/syslog
+> journalctl -u ssh
+
+# To see the users on the system
+> cat /etc/passwd
+# Criptated passowrds
+> cat /etc/shadow
+# Repeat the most recent command
+> sudo !!
+
+# Add a new user
+> sudo adduser nameOfTheNewUser
+# Switch to another user
+> su - nameOfTheUser
+# Logout
+> logout
+# Change password
+> passwd
+# To go to root
+> sudo su -
+# Remove a user (and all the files from the user)
+> sudo userdel -r nameOfTheUser
