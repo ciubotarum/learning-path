@@ -280,6 +280,9 @@ docker-compose up -d --build
 ## To create a file to be executed (in the file write the comand you want to execute)
 # if put "-x" the execution is denied (r is for read, w is for write)
 > chmod +x myscript.sh
+# Change permissions to files (read only for admin, 444 - read for all, 2 - write)
+# 777 read, write, execute for all
+> chmod 400 testfile
 
 # Check resource usage (add -m to see in megabites)
 > free
@@ -296,6 +299,12 @@ docker-compose up -d --build
 
 # Search packages available
 > apt search firefox
+# Search anything by name with the extention .log 
+> find / -name *.log
+> find -type f -name log                   # search for files
+> find -type f -name log                   # search for directory
+> find /var -type f -name "*log" 2> /dev/null
+> find /var/log -type f -name *.log -mtime -30                    # find files modified last 30 days
 
 # To reboot the terminal (after you make some changes)
 > sudo reboot
@@ -323,3 +332,45 @@ docker-compose up -d --build
 > sudo su -
 # Remove a user (and all the files from the user)
 > sudo userdel -r nameOfTheUser
+
+# Redirect the output of a command into a file
+> ls -l > file.txt
+# Add the comand to a file
+> ls -l >> file.txt
+
+# To find a file
+> ls -l | grep nameOfFile
+# Sort the content of a file and return uniq values of the content
+> cat file.txt | sort | uniq
+# To not see something (the file.txt)
+> cat file.txt | grep -v file.txt
+# To find all case insensitive
+> grep -nri "whatIWantToFind"
+
+# NUmber of items in a directory
+> ls -l /pathToDirectory | wc -l
+
+# Print a command was successful or nor (or simply print echo "Hello")
+> echo $?
+# Read a variable
+> echo $NameOfVariable
+
+# See al the variables in the current session
+> env
+
+# Dislpay networks available for connection
+> sudo netstat -tulpn
+
+# To find all the ip addresses
+> ip a
+
+# To establish a connection with another local host
+> ssh root@192.168.0.7
+
+# Secure copy transfere the files
+> scp NameOfFile user@ip:home/jay/
+# Copy to the home directoty 
+> cp -r name ~
+# Another copy
+> rsync -rv name user@172.105.10.238:home/jay
+> rsync -avz nes 172.105.10.238:
