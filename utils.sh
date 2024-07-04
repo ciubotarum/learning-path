@@ -37,9 +37,9 @@ System.out.printf("%f", 5.5) # to print float
 BigDecimal number1 = new BigDecimal("34.56789876");
 
 ## Method Syntax
-# ReturnType nameOfTheMethod(Type argumentName) {
-#     //Body of the method
-# }
+ReturnType nameOfTheMethod(Type argumentName) {
+    //Body of the method
+}
 # "void" - method daca nu vreau sa returneze nimic
 
 ## String and List: List<String>
@@ -49,7 +49,9 @@ str.substring(2) # get only from the 2nd character and so on
 str.substring(2,5) # get the characters from 2 inclusive to 5 exclusive
 str.indexOf("es") # to search if some string is from str and returns the index of the "e"
 str.lastIndexOf('t') # the last appearence of a letter in a string
-str.contains("ext") #verify if a string contains such a substring : returns true or false
+str.contains("ext") # verify if a string contains such a substring : returns true or false
+str.equals(str1) # compare 2 strings if they a equal
+char[] charArray = str.toCharArray() # convert a string to char array
 str. + tab = show all the operation available for str
 StringBuffer sb = new StringBuffer("TEst"); # can change the initial string after operations
 StringBuilder = sb = new StringBuilder("test"); # more rapid
@@ -57,6 +59,8 @@ StringBuilder = sb = new StringBuilder("test"); # more rapid
 # to remove from ArrayList
 jshell> Iterator<String> iterator = wordsAl.iterator();
 iterator ==> java.util.ArrayList$Itr@71318ec4
+arr.remove(index);
+arr.add(item)   # to add an element
 
 jshell> while (iterator.hasNext()) {
    ...>     if (iterator.next().endsWith("at")) {
