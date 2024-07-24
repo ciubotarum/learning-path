@@ -210,3 +210,42 @@ SELECT coffeeshop_id, COUNT(employee_id)
 FROM employees
 GROUP BY coffeeshop_id;
 ```
+
+## JOINS
+
+1. INNER JOIN
+```sh
+SELECT s.coffeeshop_name, l.city, l.country
+FROM shops s
+INNER JOIN locations l
+ON s.city_id = l.city_id;
+
+SELECT s.coffeeshop_name, l.city, l.country
+FROM shops s
+JOIN locations l
+ON s.city_id = l.city_id;
+```
+
+2. LEFT JOIN
+```sh
+SELECT s.coffeeshop_name, l.city, l.country
+FROM shops s
+LEFT JOIN locations l
+ON s.city_id = l.city_id;
+```
+
+3. RIGHT JOIN
+```sh
+SELECT s.coffeeshop_name, l.city, l.country
+FROM shops s
+RIGHT JOIN locations l
+ON s.city_id = l.city_id;
+```
+
+4. FULL OUTER JOIN
+```sh
+SELECT s.coffeeshop_name, l.city, l.country
+FROM shops s
+FULL OUTER JOIN locations l
+ON s.city_id = l.city_id;
+```
