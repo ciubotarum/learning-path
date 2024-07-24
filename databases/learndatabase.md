@@ -109,3 +109,104 @@ UPDATE employees
 SET coffeeshop_id = 1 
 WHERE employee_id IN (501559, 144108);
 ```
+
+## Show Tables
+
+1. See all the table
+```sh
+SELECT * FROM employees;
+```
+
+2. See certain columns
+```sh
+SELECT emplyee_id, firs_name FROM employees;
+```
+
+3. Select employees who make more than 50k
+```sh
+SELECT *
+FROM employees
+WHERE salary > 50000;
+```
+
+4. Select employees who make more than 50k and are males
+```sh
+SELECT *
+FROM employees
+WHERE salary > 50000
+AND gender = 'M';
+```
+5. Select employees with no missing addressses
+```sh
+SELECT *
+FROM employees
+WHERE NOT email IS NULL;
+```
+
+6. Select salary between 35k and 50k
+```sh
+SELECT *
+FROM employees
+WHERE salary BETWEEN 35000 AND 50000;
+```
+
+7. Order by salary ascending
+```sh 
+SELECT employee_id, first_name, last_name, salary
+FROM employees
+ORDER BY salary;
+```
+
+8. Extract
+```sh
+SELECT
+    hire_date,
+    EXTRACT(YEAR FROM hire_date) AS year,
+    EXTRACT(MONTH FROM hire_date) AS month,
+    EXTRACT(Day FROM hire_date) AS day
+FROM employees;
+```
+
+9. Uppercase first and last names
+```sh
+SELECT
+    first_name,
+    UPPER(first_name) AS first_name_upper,
+    last_name
+    UPPER(last_name) AS last_name_upper
+FROM employees;
+```
+
+10. Concatenations 
+```sh
+SELECT
+ first_name || ' ' || last_name AS full_name
+FROM employee;
+```
+
+11. SUbstring & Position to find the email client
+```sh
+SELECT
+    email,
+    SUBSTRING(email FROM POSITION('@' IN email)) -- add 1 to see without @
+FROM employees;
+```
+
+12. Select the maximum salary
+```sh
+SELECT MAX(salary) as max_sal
+FROM employees;
+```
+
+13. Average salary
+```sh
+SELECT AVG(salary)
+FROM employees;
+```
+
+14. Return the number of employees for each coffeeshop
+```sh
+SELECT coffeeshop_id, COUNT(employee_id)
+FROM employees
+GROUP BY coffeeshop_id;
+```
