@@ -213,7 +213,10 @@ GROUP BY coffeeshop_id;
 
 ## JOINS
 
-1. INNER JOIN
+* Used to combine rows from 2 or more tables on a related column
+
+1. INNER JOIN 
+   - returns only the rows that have matching values in both tables
 ```sh
 SELECT s.coffeeshop_name, l.city, l.country
 FROM shops s
@@ -227,6 +230,8 @@ ON s.city_id = l.city_id;
 ```
 
 2. LEFT JOIN
+    - retuns all the rows from the left table and the matched rows from the right table
+    - if there is no match, the resukt in NULL on the side of the right table
 ```sh
 SELECT s.coffeeshop_name, l.city, l.country
 FROM shops s
@@ -235,6 +240,8 @@ ON s.city_id = l.city_id;
 ```
 
 3. RIGHT JOIN
+    - retuns all the rows from the right table and the matched rows from the left table
+    - if there is no match, the resukt in NULL on the side of the left table
 ```sh
 SELECT s.coffeeshop_name, l.city, l.country
 FROM shops s
@@ -243,6 +250,8 @@ ON s.city_id = l.city_id;
 ```
 
 4. FULL OUTER JOIN
+    - returns all rows when there is a match in one of the tables
+    - if there is no match, the result in NULL on the side that does not have a match
 ```sh
 SELECT s.coffeeshop_name, l.city, l.country
 FROM shops s
@@ -253,6 +262,7 @@ ON s.city_id = l.city_id;
 ## UNION
 
 * To stack data on top each other
+* Combine the result sets of two or more `SELECT` statements into a single result result set
 * Removes all the duplicates
 * `UNION ALL` keeps all the duplicates
 
@@ -263,3 +273,15 @@ UNION
 SELECT country FROM locations;
 ```
 
+## SUBQUERIES
+
+* A query nested inside another query
+
+1. Select subqueries with subqueries in the FROM clause
+```sh
+SELECT *
+FROM (SELECT * FROM employees where coffeeshop_id IN (3,4)) a;
+
+SELECT a.employee_id, a.first_name, a.last_name
+FROM (SELECT * FROM employees where coffeeshop_id IN (3,4)) a;
+```
