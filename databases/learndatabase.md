@@ -249,3 +249,17 @@ FROM shops s
 FULL OUTER JOIN locations l
 ON s.city_id = l.city_id;
 ```
+
+## UNION
+
+* To stack data on top each other
+* Removes all the duplicates
+* `UNION ALL` keeps all the duplicates
+
+1. Return all cities and countries
+```sh
+SELECT city FROM locations
+UNION
+SELECT country FROM locations;
+```
+
