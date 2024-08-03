@@ -105,9 +105,37 @@ let <variableName>: <type> = <initial value>;
 # The .js file is still generated even with compilation errors. To prevent this:
 > tsc --noEmitOnError NameOfFile.ts
 
-## To generate a typescript react application tamplate (navigate to the folder you want it to be created)
+## To generate a typescript react application template (navigate to the folder you want it to be created)
 > npx create-react-app react-library --template typescript
 
+## Componenets to integrate into application
+
+# Make easier to make http requests (installing)
+> npm install axios
+
+# Enable to use bootstrap for styling
+> npm install bootstrap
+# Also have to include in index.js
+> import 'bootstrap/dist/css/bootrstrap.min.css';
+
+# Allows to use bootstrap related components for styling
+> npm i react-bootstrap
+
+# use icons in project
+> npm i @fortawesome/react-fontawesome
+# second related pachage
+> npm i @fortawesome/free-solid-svg-icons
+
+# to play movie trailers in the app
+> npm i react-player
+
+# for the path 
+> npm i react-router-dom
+
+# material mui to do a carousel
+> npm install @mui/material @emotion/react @emotion/styled
+# to use it
+> npm install react-material-ui-carousel
 
 ################################ DOCKER ############################################
 # To create a new directory run this in comand prompt

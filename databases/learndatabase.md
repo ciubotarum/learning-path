@@ -60,6 +60,21 @@ Definition:
 * requests to the database management system for specific information
 * the more complex a database is the more difficult to request information
 
+## Create a Database
+
+1. Create a database
+```sh
+CREATE DATABASE name_of_database;
+```
+2. Delete a database
+```sh
+DROP DATABASE name_of_database;
+```
+3. To put tables in database (to can use it)
+```sh
+USE name_of_database;
+```
+
 ## Create Tables
 
 1. Create employees table
