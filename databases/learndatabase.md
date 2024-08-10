@@ -70,7 +70,7 @@ CREATE DATABASE name_of_database;
 ```sh
 DROP DATABASE name_of_database;
 ```
-3. To put tables in database (to can use it)
+1. To put tables in database/schema (to can use it)
 ```sh
 USE name_of_database;
 ```
@@ -104,6 +104,13 @@ ALTER TABLE employees
 ADD FOREIGN KEY (coffeeshop_id)
 REFERENCES shops(coffeeshop_id)
 ON DELETE SET NULL;
+```
+4. Add more columns to an existing table
+```sh
+ALTER TABLE table_name
+ADD COLUMN column_name1 data_type1 [constraints],
+ADD COLUMN column_name2 data_type2 [constraints],
+ADD COLUMN column_name3 data_type3 [constraints];
 ```
 
 ## Insert Into Tables
@@ -199,7 +206,7 @@ SELECT
 FROM employee;
 ```
 
-11. SUbstring & Position to find the email client
+11. Substring & Position to find the email client
 ```sh
 SELECT
     email,
