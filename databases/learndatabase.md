@@ -124,8 +124,14 @@ INSERT INTO employees VALUES (144108, 'Khalil', 'Corr', 'kcorr1@github.io', '201
 ```sh
 INSERT INTO shops VALUES(1, 'Common Grounds', NULL);
 ```
+3. Update an existig value in the table with another
+```sh
+UPDATE groceries
+SET aisle = 7
+WHERE id = 1;
+```
 
-3. Now set the coffeeshop_id for the first two employees we inserted to 1
+4. Now set the coffeeshop_id for the first two employees we inserted to 1 
 ```sh
 UPDATE employees
 SET coffeeshop_id = 1 
