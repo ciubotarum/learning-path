@@ -189,7 +189,7 @@ ORDER BY salary;
 ```sh
 SELECT
     hire_date,
-    EXTRACT(YEAR FROM hire_date) AS year,
+    EXTRACT(YEAR FROM hire_date) AS year,           # AS - shortkey to use alias for a column
     EXTRACT(MONTH FROM hire_date) AS month,
     EXTRACT(Day FROM hire_date) AS day
 FROM employees;
@@ -237,6 +237,17 @@ FROM employees;
 SELECT coffeeshop_id, COUNT(employee_id)
 FROM employees
 GROUP BY coffeeshop_id;
+```
+15. To select the distinct values
+```sh
+SELECT DISTINCT year_hired
+FROM employees;
+```
+16. View is a virtual table (when accessed it automatically updates in the underlying data)
+```sh
+CREATE VIEW employee_hire_years AS
+SELECT id, name, year_hired
+FROM employees;
 ```
 
 ## JOINS
