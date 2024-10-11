@@ -249,6 +249,18 @@ CREATE VIEW employee_hire_years AS
 SELECT id, name, year_hired
 FROM employees;
 ```
+17. Limit the number of results (show only 2 rows of data)
+<!-- PostgreSQL -->
+```sh                       
+SELECT id, name
+FROM employees
+LIMIT 2;
+```
+<!-- SQL Server -->
+```sh
+SELECT TOP(2) id, name
+FROM employees;
+```
 
 ## JOINS
 
