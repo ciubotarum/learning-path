@@ -105,12 +105,12 @@ ADD FOREIGN KEY (coffeeshop_id)
 REFERENCES shops(coffeeshop_id)
 ON DELETE SET NULL;
 ```
-4. Add more columns to an existing table
+4. Add more columns to an existing table (some lannguage may require COLUMN after ADD)
 ```sh
 ALTER TABLE table_name
-ADD COLUMN column_name1 data_type1 [constraints],
-ADD COLUMN column_name2 data_type2 [constraints],
-ADD COLUMN column_name3 data_type3 [constraints];
+ADD column_name1 data_type1 [constraints],
+ADD column_name2 data_type2 [constraints],
+ADD column_name3 data_type3 [constraints];
 ```
 
 ## Insert Into Tables
@@ -124,7 +124,7 @@ INSERT INTO employees VALUES (144108, 'Khalil', 'Corr', 'kcorr1@github.io', '201
 ```sh
 INSERT INTO shops VALUES(1, 'Common Grounds', NULL);
 ```
-3. Update an existig value in the table with another
+3. Update an existig value in the table with another, or change values
 ```sh
 UPDATE groceries
 SET aisle = 7
@@ -220,7 +220,7 @@ SELECT
 FROM employees;
 ```
 
-12. Select the maximum salary
+12. Select the maximum salary (or the minimum `MIN(salary)`)
 ```sh
 SELECT MAX(salary) as max_sal
 FROM employees;
@@ -232,24 +232,25 @@ SELECT AVG(salary)
 FROM employees;
 ```
 
-14. Return the number of employees for each coffeeshop
+14. Return the number of employees for each coffeeshop (any column in the 
+SELECT statement that is not an aggregate function must be in GROUP BY)
 ```sh
 SELECT coffeeshop_id, COUNT(employee_id)
 FROM employees
 GROUP BY coffeeshop_id;
 ```
-15. To select the distinct values
+15.  To select the distinct values
 ```sh
 SELECT DISTINCT year_hired
 FROM employees;
 ```
-16. View is a virtual table (when accessed it automatically updates in the underlying data)
+16.  View is a virtual table (when accessed it automatically updates in the underlying data)
 ```sh
 CREATE VIEW employee_hire_years AS
 SELECT id, name, year_hired
 FROM employees;
 ```
-17. Limit the number of results (show only 2 rows of data)
+17.  Limit the number of results (show only 2 rows of data) not for oracle
 <!-- PostgreSQL -->
 ```sh                       
 SELECT id, name
@@ -260,6 +261,31 @@ LIMIT 2;
 ```sh
 SELECT TOP(2) id, name
 FROM employees;
+```
+18.  Use 'HAVING' when need to filter based on an agregate function
+```sh
+SELECT release_year, COUNT(title) AS title_count
+FROM films
+GROUP BY release_year
+HAVING COUNT(title) > 10;
+```
+
+## ORACLE SQL
+1. Manipulate strings, concatenation
+```sh
+SELECT LAST_NAME || q'[ This employee's id is: ]' || EMPLOYEE_ID
+FROM EMPLOYEES
+```
+2. The operator not equal `<>`
+3. SUM function
+```sh
+SELECT SUM(Milliseconds)
+FROM Track
+```
+4. Average (mean) and median value
+```sh
+SELECT AVG(Milliseconds), MEDIAN(Milliseconds)
+FROM Track
 ```
 
 ## JOINS
