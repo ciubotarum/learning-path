@@ -195,13 +195,13 @@ SELECT
 FROM employees;
 ```
 
-9. Uppercase first and last names
+9. Uppercase first and lowercase last names
 ```sh
 SELECT
     first_name,
     UPPER(first_name) AS first_name_upper,
     last_name
-    UPPER(last_name) AS last_name_upper
+    LOWER(last_name) AS last_name_upper
 FROM employees;
 ```
 
@@ -287,6 +287,27 @@ FROM Track
 SELECT AVG(Milliseconds), MEDIAN(Milliseconds)
 FROM Track
 ```
+5. `USING` to join tables by key
+```sh
+SELECT ALBUM.TITLE, ARTIST.NAME
+FROM ALBUM INNER JOIN ARTIST
+USING (ArtistId)
+```
+6. `SUBSTR(column, m, n)` returns a portion of a string from `m`, `n`
+7. `LENGTH(val)` gives the length of a string
+8. `REPLACE(val, m, n)` replace `m` with `n` in `val`
+9. `ROUND(column, m)` round `column` to `m` decimal
+10. `TRUNC(column, m)` truncates `column` to `m` decimal
+11. `MOD(column1, column2)` returns the remainder of division
+    - helps to see if the number is even or not
+12. Concatenate strings
+```sh
+SELECT LastName, CustomerId, CONCAT(
+    SUBSTR(LastName, 1, 4), 
+    CustomerId
+) AS Username
+FROM Customer
+```
 
 ## JOINS
 
@@ -336,6 +357,22 @@ FULL OUTER JOIN locations l
 ON s.city_id = l.city_id;
 ```
 
+5. CROSS JOIN 
+   - multiply 2 sets of elements to generate all posible pairs
+```sh
+SELECT s.coffeeshop_name, l.city, l.country
+FROM shops s
+CROSS JOIN locations l
+```
+
+6. SELF JOIN
+    - Allows to join a table to itself
+```sh
+SELECT e.LastName Employee, m.LastName ReportsTo
+FROM Employee e JOIN Employee m
+ON (e.ReportsTo = m.EmployeeId)
+```
+
 ## UNION
 
 * To stack data on top each other
@@ -349,6 +386,32 @@ SELECT city FROM locations
 UNION
 SELECT country FROM locations;
 ```
+
+## INTERSECT
+
+- rows outputted by both queries
+- what have both
+
+1. Which tracks by Miles Davis are in playlist
+```sh
+(SELECT TrackId from PlaylistTrack)
+INTERSECT
+(SELECT TrackId from Track
+WHERE Composer = 'Miles Davis')
+```
+
+## MINUS
+
+- distinct rows in 1st query that are not in the 2nd
+
+1. Who are artists that don't compose music
+```sh
+(SELECT Name from Artist)
+MINUS
+(SELECT Composer from Track
+ORDER BY 1 DESC)
+```
+
 
 ## SUBQUERIES
 
