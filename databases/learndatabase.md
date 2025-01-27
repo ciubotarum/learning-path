@@ -308,6 +308,41 @@ SELECT LastName, CustomerId, CONCAT(
 ) AS Username
 FROM Customer
 ```
+13. NON-NULL VALUE
+- `NVL(x,y)` convert `x`, which may contain a null value to `y` (non-null value)
+```sh
+SELECT NVL(HireDate, '11/19/2024')
+FROM employee
+```
+ -  `NULLIF(x,y)` compares `x` to `y` and returns
+    -   `NULL` if `x`=`y`
+    -   `x` if they are not equal
+- `COALESCE` returns first non-null value in a list
+```sh
+SELECT CustomerId, COALESCE(phone, email, fax) AS ContactMethod
+FROM Customer
+```
+
+## Conversion to data types
+- A char can be converted to date using `TO_DATE()`
+- A date can be converted to char using `TO_CHAR()`
+```sh
+SELECT TO_CHAR(BirthDate, 'DD-MON-YYYY')
+FROM Employee
+```
+- A char can be converted to NUM using `TO_NUMBER()`
+- A NUM can be converted to char using `TO_CHAR()`
+```sh
+SELECT UnitPrice, TO_CHAR(UnitPrice, '$999.99')
+FROM InvoiceLine
+```
+Fromat elements:
+  - `$` floating dollar sign
+  - `.` decimal position
+  - `9` specifies numeric position (the number of 9's determine the display width)
+  - `0` specifies leading zeros
+  - `,` comma position in the number
+
 
 ## JOINS
 
@@ -339,7 +374,7 @@ ON s.city_id = l.city_id;
 
 3. RIGHT JOIN
     - retuns all the rows from the right table and the matched rows from the left table
-    - if there is no match, the resukt in NULL on the side of the left table
+    - if there is no match, the result in NULL on the side of the left table
 ```sh
 SELECT s.coffeeshop_name, l.city, l.country
 FROM shops s
